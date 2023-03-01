@@ -5,9 +5,6 @@
 package com.crio.starter;
 
 import lombok.extern.log4j.Log4j2;
-import java.util.Arrays;
-import java.util.List;
-import com.crio.starter.dto.MemeDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
