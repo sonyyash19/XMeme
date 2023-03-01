@@ -3,12 +3,14 @@ package com.crio.starter.service;
 import com.crio.starter.exchange.ResponseDto;
 import com.crio.starter.repository.GreetingsRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class GreetingsService {
 
+  @Autowired
   private final GreetingsRepository greetingsRepository;
 
   public ResponseDto getMessage(String id) {
