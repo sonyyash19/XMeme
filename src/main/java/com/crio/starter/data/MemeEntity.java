@@ -20,7 +20,7 @@ public class MemeEntity {
     @Indexed(unique = true)
     private String name;
     @NotNull
-    @Indexed(unique = true)
+    // @Indexed(unique = true)
     private String url;
     @NotNull
     @Indexed(unique = true)

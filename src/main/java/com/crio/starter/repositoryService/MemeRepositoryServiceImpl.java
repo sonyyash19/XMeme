@@ -26,6 +26,7 @@ public class MemeRepositoryServiceImpl implements MemeRepositoryService{
     public MemeDto postMeme(MemeEntity memeEntity) {
         MemeEntity meme = null;
 
+        log.info("Meme in dbServiceImpl " + memeEntity);
         // if any of the field in meme is already present this will throw exception and null will be
         // returned
         try {
@@ -33,6 +34,8 @@ public class MemeRepositoryServiceImpl implements MemeRepositoryService{
         } catch (Exception e) {
             log.error(e.getMessage());
         }
+
+        log.info("Meme generated with id " + meme);
 
         if(meme == null){
             return new MemeDto();

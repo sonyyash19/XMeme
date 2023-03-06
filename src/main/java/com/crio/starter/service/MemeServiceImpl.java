@@ -22,8 +22,9 @@ public class MemeServiceImpl implements MemeService {
 
     @Override
     public MemeCreated postMeme(MemeEntity memeEntity) {
-        log.info("Meme from db {}" + memeEntity);
+        log.info("Meme Sent to db {}" + memeEntity);
         MemeDto meme = memeRepositoryService.postMeme(memeEntity);
+        log.info("Meme received from db " + meme);
         return new MemeCreated(meme.getId());
     }
 
@@ -31,7 +32,7 @@ public class MemeServiceImpl implements MemeService {
     public List<MemeDto> getMemes() {
         List<MemeDto> meme = memeRepositoryService.getMemes();
         
-        // sotres the latest 100 data
+        // sorted data in descending order
         meme = latestHundredData(meme);
 
         // if meme list size is greater then 100 we need to return latest 100 data
@@ -43,7 +44,7 @@ public class MemeServiceImpl implements MemeService {
         return meme;
     }
 
-    // return the latest 100 data from all data present in the repository
+    // sort the data in descending order and return it
     private List<MemeDto> latestHundredData(List<MemeDto> meme){
 
         Collections.sort(meme, new SortMemeDto());

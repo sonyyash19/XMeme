@@ -13,7 +13,7 @@ public class MemeDto {
 
     private String id;
     private String name;
-    private String url;
     private String caption;
+    private String url;
     
 }

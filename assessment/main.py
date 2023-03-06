@@ -137,8 +137,14 @@ class XMemeAssessment(TestCase):
             'caption': 'crio-meme' + "9999",
             'url': self.SAMPLE_URL + self.FIRST_POST
         }
+        # body = {
+        #     'name': 'Yash',
+        #     'caption': 'Soni',
+        #     'url': 'Yash@Soni'
+        # }
         response = self.post_api(endpoint, json.dumps(body))
         # print("verify that response status code is one of " + str(self.POSITIVE_STATUS_CODES))
+        print(response.status_code)
         self.assertIn(response.status_code, self.POSITIVE_STATUS_CODES)
         data = self.decode_and_load_json(response)
         # print('First post data: ', data)
@@ -149,8 +155,8 @@ class XMemeAssessment(TestCase):
         self.assertIn(response.status_code, self.POSITIVE_STATUS_CODES)
         data = self.decode_and_load_json(response)
         # print('get single: ', data)
-        self.assertEqual(data['name'], 'crio-user' + "9999")
-        self.assertEqual(data['caption'], 'crio-meme' + "9999")
+        self.assertEqual(data['name'], 'crio-user9999')
+        self.assertEqual(data['caption'], 'crio-meme9999')
         self.assertEqual(data['url'], self.SAMPLE_URL + self.FIRST_POST)
 
 
@@ -198,6 +204,7 @@ class XMemeAssessment(TestCase):
 
         get_response = self.get_api(endpoint)
         data = self.decode_and_load_json(get_response)
+        print(len(data))
         self.assertGreater(len(data), 50)
 
     @pytest.mark.run(order=8)

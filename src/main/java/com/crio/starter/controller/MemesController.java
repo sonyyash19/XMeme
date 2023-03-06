@@ -10,6 +10,7 @@ import com.crio.starter.exchange.MemeCreated;
 import com.crio.starter.exchange.ResponseDto;
 import com.crio.starter.service.MemeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class MemesController {
     public ResponseEntity<?> postMeme(@RequestBody @Valid MemeEntity memeEntity){
 
         log.info("Meme Request received with {}" + memeEntity);
-
+        
         MemeCreated memeId = memeService.postMeme(memeEntity);
         // if id is null means that out of the all the fields present in the memesEntity
         // any field is getting repeated.
@@ -64,7 +65,8 @@ public class MemesController {
             return ResponseEntity.status(404).body(responseDto);
         }
         
-        return ResponseEntity.ok().body(meme);
+        // return ResponseEntity.ok().body(meme);
+        return new ResponseEntity<>(meme, HttpStatus.CREATED);
     }
     
 }
